@@ -6,21 +6,12 @@ services:
     container_name: service_1
     expose:
       - "5001"
-    # Healthcheck is optional during recording
-    # healthcheck:
-    #   test: ["CMD", "curl", "-f", "http://localhost:5001"]
-    #   interval: 10s
-    #   retries: 3
 
   service_2:
     build: ./service_2
     container_name: service_2
     expose:
       - "5002"
-    # healthcheck:
-    #   test: ["CMD", "curl", "-f", "http://localhost:5002"]
-    #   interval: 10s
-    #   retries: 3
 
   nginx:
     build: ./nginx
@@ -30,4 +21,3 @@ services:
     depends_on:
       - service_1
       - service_2
-
