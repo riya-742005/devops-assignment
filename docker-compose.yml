@@ -5,22 +5,20 @@ services:
     build: ./service_1
     container_name: service_1
     expose:
-      - "8001"
+      - "5001"
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8001"]
+      test: ["CMD", "curl", "-f", "http://localhost:5001"]
       interval: 10s
-      timeout: 5s
       retries: 3
 
   service_2:
     build: ./service_2
     container_name: service_2
     expose:
-      - "8002"
+      - "5002"
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8002"]
+      test: ["CMD", "curl", "-f", "http://localhost:5002"]
       interval: 10s
-      timeout: 5s
       retries: 3
 
   nginx:
@@ -33,4 +31,3 @@ services:
         condition: service_healthy
       service_2:
         condition: service_healthy
-
