@@ -1,11 +1,9 @@
-FROM python:3.11-slim
+FROM python:3.9-slim
 
 WORKDIR /app
+COPY app.py .
 
-COPY . .
-
-RUN pip install -r requirements.txt
-
-EXPOSE 8001
+RUN pip install flask
 
 CMD ["python", "app.py"]
+
