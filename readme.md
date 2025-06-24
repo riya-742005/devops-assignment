@@ -1,101 +1,56 @@
-### 🧪 **DevOps Intern Assignment: Nginx Reverse Proxy + Docker**
+# 🔁 DevOps Assignment: Nginx Reverse Proxy + Docker
 
-You are expected to set up a simple system where:
+This project demonstrates a basic **Docker Compose setup** with two backend services and an **Nginx reverse proxy** routing between them.
 
-1. **Two Dockerized backend services** (can be dummy services) run on different ports.
-2. An **Nginx reverse proxy** (also in a Docker container) routes:
-
-   * `/service1` requests to backend service 1
-   * `/service2` requests to backend service 2
-3. All services must be accessible via a single port (e.g., `localhost:8080`).
-
----
-
-### ✅ **Requirements**
-
-1. Use Docker Compose to bring up the entire system.
-2. Each backend service should respond with a JSON payload like:
-
-   ```json
-   {"service": "service1"}
-   ```
-3. The Nginx config should support:
-
-   * Routing based on URL path prefix (`/service1`, `/service2`)
-   * Logging incoming requests with timestamp and path
-4. The system should work with a single command:
-
-   ```bash
-   docker-compose up --build
-   ```
-5. Bonus: Add a health check for both services and show logs of successful routing.
-
----
-
-### 📁 Suggested Project Structure
-
-```
-.
+## 📁 Project Structure
 ├── docker-compose.yml
-├── nginx
-│   ├── default.conf
-│   └── Dockerfile
-├── service_1
-│   ├── app.py
-│   └── Dockerfile
-├── service_2
-│   ├── app.py
-│   └── Dockerfile
-└── README.md
-```
+├── nginx/
+│ ├── nginx.conf
+│ └── Dockerfile
+├── service_1/
+│ ├── app.py
+│ └── Dockerfile
+├── service_2/
+│ ├── app.py
+│ └── Dockerfile
+-------------------------
 
----
+## 🚀 How to Run the Project
 
-### 📦 Tech Constraints
+> 🐳 Make sure Docker & Docker Compose are installed
 
-* Nginx must run in a Docker container, not on host
-* Use bridge networking (no host networking)
+1️⃣ Clone the repo
 
----
+```bash
+git clone https://github.com/your-username/your-repo-name.git
+cd your-repo-name
 
-### 📝 Submission Instructions
+2️⃣ Run with Docker Compose
+bash
+Copy
+Edit
+docker compose up --build
+This command builds all services and starts the system.
 
-1. Upload your project to GitHub or GitLab.
-2. Include a short `README.md` with:
+Access the Services
+Once running, go to:
 
-   * Setup instructions
-   * How routing works
-   * Any bonus you implemented
-3. Deadline: **1 week**
-4. Bonus points for:
+✅ http://localhost:8080/service1 → Returns {"service": "service1"}
 
-   * Logging clarity
-   * Clean and modular Docker setup
-   * Healthcheck or automated test script
+✅ http://localhost:8080/service2 → Returns {"service": "service2"}
 
----
+⚙️ Routing via Nginx
+Nginx is used as a reverse proxy:
+/service1 routes to Flask service 1 (port 5001)
+/service2 routes to Flask service 2 (port 5002)
+Logs are enabled in custom format with timestamp and path.
 
-### ❓FAQs
+✅ Bonus Features
+Clean reverse proxy routing
+JSON response per service
+Healthchecks (optional — add in docker-compose)
 
-**Q: Is this a full-time role?**
-Yes. You would need to be in office in Bangalore.
-
-**Q: Is there a stipend?**
-Yes. 20k INR per month
-
-**Q: How many positions are open?**
-Two positions are open.
-
-**Q: I am still in college. Can I apply?**
-Unfortunately, we are looking for post-college candidates.
-
-**Q: Can I reach out for doubts?**
-No — due to the volume of submissions. Please use your creativity and assumptions where needed.
-
-**Q: Can I use ChatGPT or Copilot?**
-Yes, feel free to use AI tools — we care about your implementation and understanding.
-
-**Q: This feels like a lot for an intern assignment.**
-We agree it’s non-trivial — we’ve received many applications, so this helps us filter based on quality.
+📽️ Demo
+https://www.loom.com/share/732e554643574157a79bb5e9c489f4c5?sid=17c63a5b-6935-4f71-94bc-112b3cfd9262
 
 
