@@ -21,3 +21,5 @@ services:
     depends_on:
       - service_1
       - service_2
+
+  
